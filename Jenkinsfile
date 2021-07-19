@@ -8,7 +8,7 @@ pipeline {
 			}
 			stage('SonarQube') {
 				steps {
-					sh 'echo "Step Two" '
+					sh 'echo "Step Two Sonar" '
 				}
             } 
 
