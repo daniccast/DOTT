@@ -1,6 +1,20 @@
+properties([pipelineTriggers([githubPush()])])
+
 pipeline {
 	agent any
 		stages {
+            stage('Checkout SCM') {
+                steps {
+                    checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: 'master']],
+                    userRemoteConfigs: [[
+                        url: 'git@github.com:daniccast/DOTT.git',
+                        credentialsId: '',
+                    ]]
+                    ])
+                }
+            }
 			stage('Build') {
 				steps {
 					sh 'echo "Step One" '
