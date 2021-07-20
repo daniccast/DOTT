@@ -15,8 +15,8 @@ pipeline {
 		    stage('Code Quality Check via SonarQube') {
 				steps {
 					script {
-					
-						withSonarQubeEnv("SonarQube") {
+					def scannerHome = tool 'SonnarQubeScanner';
+						withSonarQubeEnv("sonarqube") {
 						sh '''
 						echo "Tratando de conectar"
 						${tool("sonarqube")}/bin/sonar-scanner \
