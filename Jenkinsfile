@@ -18,6 +18,7 @@ pipeline {
 					def scannerHome = tool: 'sonarqube';
 						withSonarQubeEnv("SonarQube") {
 						sh '''
+						echo "Tratando de conectar"
 						${tool("sonarqube")}/bin/sonar-scanner \
 						-Dsonar.projectKey=DOTT \
 						-Dsonar.sources=. \
