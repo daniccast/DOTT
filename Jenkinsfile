@@ -15,7 +15,7 @@ pipeline {
 		    stage('Code Quality Check via SonarQube') {
 				steps {
 					script {
-					def scannerHome = tool 'sonarqube';
+					def scannerHome = tool name: 'sonar_scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
 						withSonarQubeEnv("SonarQube") {
 						sh '''
 						${tool("sonarqube")}/bin/sonar-scanner \
