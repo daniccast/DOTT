@@ -13,7 +13,7 @@ pipeline {
 				}
 				steps {
 					sh 'echo " SONARQUBE"'
-					withSonarQubeEnv('SonarQubeScanner') {
+					withSonarQubeEnv('sonarqube') {
 						sh '''
 						${scannerHome}/bin/sonar-scanner\
 						-Dsonar.projectKey=DOTT \
