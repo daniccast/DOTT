@@ -3,7 +3,7 @@ pipeline {
 		stages {
 			stage('Clone'){
 				steps{
-					url: 'https://github.com/daniccast/DOTT.git'
+					git url: 'https://github.com/daniccast/DOTT.git'
 				}
 			}
 
