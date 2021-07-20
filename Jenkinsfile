@@ -6,6 +6,12 @@ pipeline {
 					sh 'echo "Step One build something else" '
 				}
 			}
+
+			stage('Clone sources') {
+				steps {
+					git url: 'https://github.com/daniccast/DOTT.git'
+				}
+        	}
 			stage('SonarQube analysis') {
 				steps {
 					withSonarQubeEnv('SonarQube') {
