@@ -1,12 +1,20 @@
 pipeline {
 	agent any
 		stages {
-			stage('Build') {
-				steps {
-					sh 'echo "Step One build something else" '
+			stage('Clone'){
+				steps{
+					url: 'https://github.com/daniccast/DOTT.git'
 				}
 			}
 
+			stage('Build') {
+				steps {
+					nodejs(nodeJSInstallationName: 'nodejs'){
+						sh 'npm install'
+					}
+				}
+			}
+			
 			stage('Sonarqube') {
 				environment {
 					scannerHome = tool 'SonarQubeScanner'
