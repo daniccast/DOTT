@@ -6,11 +6,19 @@ pipeline {
 					sh 'echo "Step One build" '
 				}
 			}
-			stage('SonarQube') {
+			stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "./gradlew sonarqube"
+                }
+            }
+			}
+			
+			stage("Quality gate") {
 				steps {
-					sh 'echo "Step Two Sonar" '
+					waitForQualityGate abortPipeline: true
 				}
-            } 
+			}
 
 			stage('Testing') {
 				steps {
