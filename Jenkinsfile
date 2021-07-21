@@ -17,17 +17,17 @@ pipeline {
 
 			stage('SonarQube analysis') {
 				environment {
-					scannerHome = tool 'SonarQube Scanner'
+					scannerHome = tool 'sonar'
 				}
 				steps {
 					withSonarQubeEnv('sonar') {
 						sh '''
+						echo "Sonar q"
 						${scannerHome}/bin/sonar-scanner \
-						-Dsonar.projectKey=DOTT \
+						-Dsonar.projectKey=daniela \
 						-Dsonar.sources=. \
-						-Dsonar.css.node=. \
 						-Dsonar.host.url=http://18.119.117.22:9000 \
-						-Dsonar.login= 2ef9b5082d2a7e41ed9b4ba0f44ba413b4aef087
+						-Dsonar.login=099295bf279ba94f1f6a5d819a16a114d9a962d7
 						'''
 					}
 					timeout(time: 10, unit: 'MINUTES') {
