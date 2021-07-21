@@ -16,14 +16,11 @@ pipeline {
 			}
 
 			stage('SonarQube analysis') {
-				environment {
-					scannerHome = tool 'sonar'
-				}
 				steps {
 					withSonarQubeEnv('sonar') {
 						sh '''
 						echo "Sonar q"
-						${scannerHome}/bin/sonar-scanner \
+						sonar-scanner \
 						-Dsonar.projectKey=daniela \
 						-Dsonar.sources=. \
 						-Dsonar.host.url=http://18.119.117.22:9000 \
