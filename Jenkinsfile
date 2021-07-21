@@ -12,12 +12,19 @@ pipeline {
 					script{
 						try{
 							withSonarQubeEnv('sonar') {
-								sh '''
-									echo "Sonar q"
-									sonar-scanner \
-									-Dsonar.projectKey=daniela \
-									-Dsonar.sources=. \
-								'''
+								def scannerHome = tool 'sonar';
+					   			withSonarQubeEnv("sonar") {
+						   			sh '''
+									   ${tool("sonarqube")/bin/sonar-scanner \
+						  				-Dsonar.organization=daniela \
+										-Dsonar.projectKey=daniela  \
+										-Dsonar.sources=. \
+										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+										-Dsonar.exclusions=coverage/** \
+										-Dsonar.host.url=http://10.3.0.173:9000
+										'''
+									}
+								}
 							}
 						}
 						catch(exc){
@@ -26,7 +33,7 @@ pipeline {
 					}
 				}
 			}
-			
+
 			stage('Build') {
 				steps {
 					nodejs(nodeJSInstallationName: 'nodejs'){
@@ -40,7 +47,7 @@ pipeline {
 					script {
 						try {
 							nodejs(nodeJSInstallationName: 'nodejs'){
-								sh 'npm install'
+								sh 'npm test'
 							}
 						}
 						catch (exc){
