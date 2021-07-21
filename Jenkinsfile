@@ -18,15 +18,19 @@ pipeline {
 			stage('SonarQube analysis') {
 				steps {
 					withSonarQubeEnv('sonar') {
-						sh '''
-						echo "Sonar q"
-						pwd
-						 sonar-scanner \
-						-Dsonar.projectKey=099295bf279ba94f1f6a5d819a16a114d9a962d7 \
-						-Dsonar.sources=. \
-						-Dsonar.host.url=http://10.3.0.173:9000 \
-						-Dsonar.login=2ef9b5082d2a7e41ed9b4ba0f44ba413b4aef087
-						'''
+						script{
+							try{
+								sh '''
+									echo "Sonar q"
+									sonar-scanner \
+									-Dsonar.projectKey=daniela \
+									-Dsonar.sources=. \
+								'''
+							} catch(exc){
+								sh 'echo "no se pudo"'
+							}
+						}
+						
 					}
 					timeout(time: 10, unit: 'MINUTES') {
 						waitForQualityGate abortPipeline: true
