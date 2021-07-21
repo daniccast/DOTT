@@ -1,32 +1,25 @@
 pipeline {
 	agent any
 		stages {
-			stage('Clone'){
+			stage('Build'){
 				steps{
 					git url: 'https://github.com/daniccast/DOTT.git'
 				}
 			}
 
-			stage('Build') {
+			stage('Sonar') {
 				steps {
 					nodejs(nodeJSInstallationName: 'nodejs'){
 						sh 'npm install'
-					}
-				}
-			}
-			
-			stage('Sonarqube') {
-				steps {
-					nodejs(nodeJSInstallationName: 'nodejs'){
 						withSonarQubeEnv('sonar') {
 						sh 'npm install sonar-scanner -f'
 						sh 'npm run sonar'
 						
-					}
+						}
 					}
 				}
 			}
-		    
+			
 			stage('Testing') {
 				steps {
 					sh 'echo "Step Three ddd" '
