@@ -7,20 +7,11 @@ pipeline {
 				}
 			}
 
-			stage('Build') {
-				steps {
-					nodejs(nodeJSInstallationName: 'nodejs'){
-						sh 'npm install'
-					}
-				}
-			}
-
 			stage('SonarQube analysis') {
 				steps {
 					script{
 						try{
 							withSonarQubeEnv('sonar') {
-						
 								sh '''
 									echo "Sonar q"
 									sonar-scanner \
@@ -36,16 +27,41 @@ pipeline {
 				}
 			}
 			
-		    
+			stage('Build') {
+				steps {
+					nodejs(nodeJSInstallationName: 'nodejs'){
+						sh 'npm install'
+					}
+				}
+			}
+
 			stage('Testing') {
 				steps {
-					sh 'echo "Step Three ddd" '
+					script {
+						try {
+							nodejs(nodeJSInstallationName: 'nodejs'){
+								sh 'npm install'
+							}
+						}
+						catch (exc){
+							sh 'echo "No pasaron los test unitarios"'
+						}
+					}
 				}
 			}
 
             stage('Deploy') {
 				steps {
-					sh 'echo "Step Three" '
+					script {
+						try {
+							nodejs(nodeJSInstallationName: 'nodejs'){
+								sh 'npm start'
+							}
+						}
+						catch (exc){
+							sh 'echo "No se pudo lanzar"'
+						}
+					}
 				}
 			}
 		}
