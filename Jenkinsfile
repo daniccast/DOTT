@@ -27,6 +27,7 @@ pipeline {
 									-Dsonar.projectKey=daniela \
 									-Dsonar.sources=. \
 								'''
+							}
 						}
 						catch(exc){
 								sh 'echo "No pasaron"'
