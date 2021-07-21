@@ -26,9 +26,9 @@ pipeline {
 									}
 								}
 							}
-						}
-						catch(exc){
+							catch(exc){
 								sh 'echo "No pasaron"'
+							}
 						}
 					}
 				}
