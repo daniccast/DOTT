@@ -20,7 +20,8 @@ pipeline {
 					withSonarQubeEnv('sonar') {
 						sh '''
 						echo "Sonar q"
-						sonar-scanner \
+						pwd
+						 sonar-scanner \
 						-Dsonar.projectKey=099295bf279ba94f1f6a5d819a16a114d9a962d7 \
 						-Dsonar.sources=. \
 						-Dsonar.host.url=http://10.3.0.173:9000 \
