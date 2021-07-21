@@ -23,16 +23,16 @@ pipeline {
 										-Dsonar.exclusions=coverage/** \
 										-Dsonar.host.url=http://10.3.0.173:9000
 										'''
-									}
 								}
 							}
-							catch(exc){
+						}
+						catch(exc){
 								sh 'echo "No pasaron"'
-							}
 						}
 					}
 				}
 			}
+			
 
 			stage('Build') {
 				steps {
