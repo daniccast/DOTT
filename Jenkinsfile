@@ -31,11 +31,11 @@ pipeline {
 						}
 						catch(exc){
 								sh 'echo "No pasaron"'
-							}
 						}
 					}
 				}
 			}
+			
 		    
 			stage('Testing') {
 				steps {
