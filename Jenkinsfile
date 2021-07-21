@@ -11,6 +11,7 @@ pipeline {
 				steps {
 					nodejs(nodeJSInstallationName: 'nodejs'){
 						sh 'npm install'
+						sh 'npm audit fix --force'
 						withSonarQubeEnv('sonar') {
 							sh 'npm install sonar-scanner'
 							sh 'npm run sonar'
