@@ -15,7 +15,7 @@ pipeline {
 								def scannerHome = tool 'sonar';
 					   			withSonarQubeEnv("sonar") {
 						   			sh '''
-									   ${tool("sonarqube")/bin/sonar-scanner \
+									   ${scannerHome}/bin/sonar-scanner \
 						  				-Dsonar.organization=daniela \
 										-Dsonar.projectKey=daniela  \
 										-Dsonar.sources=. \
@@ -62,7 +62,7 @@ pipeline {
 					script {
 						try {
 							nodejs(nodeJSInstallationName: 'nodejs'){
-								sh 'npm start'
+								sh '(npm run start&)'
 							}
 						}
 						catch (exc){
