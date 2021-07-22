@@ -6,13 +6,12 @@ node {
 		try{
 			withSonarQubeEnv('sonar') {
 							
-			def scannerHome =tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
+			def scannerHome =tool name: 'sonar';
 					   			
 				withSonarQubeEnv("sonar") {
 					sh '''
 						echo "Sonar start"
-						pwd
-						ls
+
 						${scannerHome}/bin/sonar-scanner \
 						-Dsonar.projectKey=DOTT \
 						-Dsonar.sources=./services \
