@@ -15,6 +15,7 @@ pipeline {
 								def scannerHome = tool 'sonar' , type: 'hudson.plugins.sonar.SonarRunnerInstallation';
 					   			withSonarQubeEnv("sonar") {
 						   			sh '''
+									   echo "Sonar"
 									   ${scannerHome}/bin/sonar-scanner \
 						  				-Dsonar.organization=daniela \
 										-Dsonar.projectKey=daniela  \
