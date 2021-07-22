@@ -18,6 +18,7 @@ pipeline {
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
+									   echo "${scannerHome}"
 									   ${scannerHome}/bin/sonar-scanner \
 						  				-Dsonar.organization=daniela \
 										-Dsonar.projectKey=daniela  \
