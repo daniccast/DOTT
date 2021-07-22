@@ -18,7 +18,7 @@ pipeline {
 									   echo "Sonar"
 									   ${scannerHome}/bin/sonar-scanner \
 						  				-Dsonar.organization=daniela \
-										-Dsonar.projectKey=daniela  \
+										
 										-Dsonar.sources=. \
 										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
 										-Dsonar.exclusions=coverage/** \
@@ -63,7 +63,8 @@ pipeline {
 					script {
 						try {
 							nodejs(nodeJSInstallationName: 'nodejs'){
-								sh 'npm start'
+								sh 'echo deployed'
+							//	sh 'npm start'
 							}
 						}
 						catch (exc){
