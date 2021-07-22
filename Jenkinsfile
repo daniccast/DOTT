@@ -12,9 +12,9 @@ pipeline {
 					script{
 						try{
 							withSonarQubeEnv('sonar') {
-								sh 'echo "Sonar 1"'
-								def scannerHome = tool 'sonar' , type: 'hudson.plugins.sonar.SonarRunnerInstallation';
-					   			sh 'echo "Sonar 2"'
+								
+								def scannerHome = tool 'sonar';
+					   			
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
@@ -24,6 +24,7 @@ pipeline {
 										-Dsonar.sources=. \
 										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
 										-Dsonar.exclusions=coverage/** \
+										-Dsonar.host.url=http://10.3.0.173:9000\
 										-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0 \
 										'''
 								}
