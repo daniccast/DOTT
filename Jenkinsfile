@@ -16,7 +16,7 @@ pipeline {
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
-									   sonar-scanner --version
+									   sonar-scanner
 										'''
 								}
 							}
