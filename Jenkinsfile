@@ -12,20 +12,11 @@ pipeline {
 					script{
 						try{
 							withSonarQubeEnv('sonar') {
-								sh 'echo "Sonar 1"'
 								def scannerHome = tool 'sonar';
-					   			sh 'echo "Sonar 2"'
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
-									   ${scannerHome}/bin/sonar-scanner \
-						  				-Dsonar.organization=daniela \
-										-Dsonar.projectKey=daniela  \
-										-Dsonar.sources=. \
-										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
-										-Dsonar.exclusions=coverage/** \
-										-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0 \
-										-X
+									   ${scannerHome}/bin/sonar-scanner --version
 										'''
 								}
 							}
