@@ -19,10 +19,9 @@ pipeline {
 						   			sh '''
 									   echo "Sonar"
 									   ${scannerHome}/bin/sonar-scanner \
-						  				-Dsonar.organization=daniela \
 										-Dsonar.projectKey=DOTT  \
 										-Dsonar.sources=./services \
-										-Dsonar.host.url=http://10.3.0.173:9000\
+										-Dsonar.host.url=http://18.119.117.22:9000\
 										-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0 \
 										'''
 								}
@@ -33,6 +32,11 @@ pipeline {
 						}
 					}
 				}
+
+				 stage('Quality Gate') {
+					// waitForQualityGate abortPipeline: true
+					sh "echo 'uwu'"
+   				}
 			}
 			
 
