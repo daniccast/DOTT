@@ -26,17 +26,16 @@ pipeline {
 										'''
 								}
 							}
+							stage('Quality Gate') {
+								// waitForQualityGate abortPipeline: true
+								sh "echo 'uwu'"
+							}
 						}
 						catch(exc){
 								sh 'echo "No pasaron"'
 						}
 					}
 				}
-
-				 stage('Quality Gate') {
-					// waitForQualityGate abortPipeline: true
-					sh "echo 'uwu'"
-   				}
 			}
 			
 
