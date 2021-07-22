@@ -11,8 +11,7 @@ node {
 				withSonarQubeEnv("sonar") {
 					sh '''
 						echo "Sonar start"
-						echo ${scannerHome}
-						${scannerHome}/bin/sonar-scanner \
+						/home/ubuntu/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner \
 						-Dsonar.projectKey=DOTT \
 						-Dsonar.sources=./services \
 						-Dsonar.host.url=http://18.119.117.22:9000 \
