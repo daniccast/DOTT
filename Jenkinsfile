@@ -16,7 +16,8 @@ pipeline {
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
-									   sonar-scanner
+									   sonar-scanner \
+									   -Dsonar.projectKey=daniela  \
 										'''
 								}
 							}
