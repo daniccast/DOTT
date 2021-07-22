@@ -22,6 +22,7 @@ pipeline {
 										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
 										-Dsonar.exclusions=coverage/** \
 										-Dsonar.host.url=http://10.3.0.173:9000
+										-Dsonar.login=099295bf279ba94f1f6a5d819a16a114d9a962d7
 										'''
 								}
 							}
