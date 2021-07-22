@@ -1,13 +1,13 @@
 node {
-			stage('Clone'){
-					git url: 'https://github.com/daniccast/DOTT.git'
-			}
+		stage('Clone'){
+				git url: 'https://github.com/daniccast/DOTT.git'
+		}
 
-			stage('SonarQube analysis') {
+		stage('SonarQube analysis') {
 						try{
 							withSonarQubeEnv('sonar') {
 								
-								def scannerHome = tool 'sonar';
+								def scannerHome =tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
 					   			
 								withSonarQubeEnv("sonar") {
 						   			sh '''
