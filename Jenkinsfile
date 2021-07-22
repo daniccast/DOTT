@@ -18,17 +18,13 @@ pipeline {
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
-									   sonar-scanner \
-										-Dsonar.projectKey=DOTT  \
-										-Dsonar.sources=./services \
-										-Dsonar.host.url=http://18.119.117.22:9000\
-										-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0 \
+									   ${scannerHome}/bin/sonar-scanner \
+										-Dsonar.projectKey=DOTT \
+										-Dsonar.sources=. \
+										-Dsonar.host.url=http://18.119.117.22:9000 \
+										-Dsonar.login=daniela
 										'''
 								}
-							}
-							stage('Quality Gate') {
-								// waitForQualityGate abortPipeline: true
-								sh "echo 'uwu'"
 							}
 						}
 						catch(exc){
