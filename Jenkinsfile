@@ -18,8 +18,9 @@ pipeline {
 									   echo "Sonar"
 									   ${scannerHome}/bin/sonar-scanner \
 						  				-Dsonar.organization=daniela \
-										
+										-Dsonar.projectKey=daniela  \
 										-Dsonar.sources=. \
+										-Dsonar.analysis.mode=\
 										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
 										-Dsonar.exclusions=coverage/** \
 										-Dsonar.login=daniela
