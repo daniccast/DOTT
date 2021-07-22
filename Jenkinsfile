@@ -22,6 +22,7 @@ pipeline {
 										-Dsonar.sources=. \
 										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
 										-Dsonar.exclusions=coverage/** \
+										-Dsonar.login=daniela
 										'''
 								}
 							}
