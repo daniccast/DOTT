@@ -12,8 +12,10 @@ pipeline {
 					script{
 						try{
 							withSonarQubeEnv('sonar') {
+								sh 'echo "Sonar 1"'
 								def scannerHome = tool 'sonar' , type: 'hudson.plugins.sonar.SonarRunnerInstallation';
-					   			withSonarQubeEnv("sonar") {
+					   			sh 'echo "Sonar 2"'
+								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
 									   ${scannerHome}/bin/sonar-scanner \
