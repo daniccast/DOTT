@@ -18,7 +18,7 @@ pipeline {
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
-									   ${scannerHome}/bin/sonar-scanner \
+									   sonar-scanner \
 										-Dsonar.projectKey=DOTT  \
 										-Dsonar.sources=./services \
 										-Dsonar.host.url=http://18.119.117.22:9000\
