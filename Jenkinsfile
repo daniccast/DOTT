@@ -18,13 +18,10 @@ pipeline {
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
-									   echo "${scannerHome}"
 									   ${scannerHome}/bin/sonar-scanner \
 						  				-Dsonar.organization=daniela \
-										-Dsonar.projectKey=daniela  \
-										-Dsonar.sources=. \
-										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
-										-Dsonar.exclusions=coverage/** \
+										-Dsonar.projectKey=DOTT  \
+										-Dsonar.sources=./services \
 										-Dsonar.host.url=http://10.3.0.173:9000\
 										-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0 \
 										'''
