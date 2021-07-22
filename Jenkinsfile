@@ -20,10 +20,9 @@ pipeline {
 						  				-Dsonar.organization=daniela \
 										-Dsonar.projectKey=daniela  \
 										-Dsonar.sources=. \
-										-Dsonar.analysis.mode=\
 										-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
 										-Dsonar.exclusions=coverage/** \
-										-Dsonar.login=daniela
+										-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0
 										'''
 								}
 							}
