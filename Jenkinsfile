@@ -12,9 +12,9 @@ node {
 								withSonarQubeEnv("sonar") {
 						   			sh '''
 									   echo "Sonar"
-									   ${scannerHome}/bin/sonar-scanner \
+									   ${scannerHome}/bin/sonar-runner \
 										-Dsonar.projectKey=DOTT \
-										-Dsonar.sources=. \
+										-Dsonar.sources=./services \
 										-Dsonar.host.url=http://18.119.117.22:9000 \
 										-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0
 										'''
