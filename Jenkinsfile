@@ -6,12 +6,12 @@ node {
 		try{
 			withSonarQubeEnv('sonar') {
 							
-			def scannerHome =tool name: 'sonar';
+			def scannerHome =tool 'sonar';
 					   			
 				withSonarQubeEnv("sonar") {
 					sh '''
 						echo "Sonar start"
-
+						echo ${scannerHome}
 						${scannerHome}/bin/sonar-scanner \
 						-Dsonar.projectKey=DOTT \
 						-Dsonar.sources=./services \
