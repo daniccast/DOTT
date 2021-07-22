@@ -4,7 +4,7 @@ import { cidrToMaskFunction } from '../services/cidrtomask';
 export const cidrToMask = (req, res, next) => {
   let value = req.query.value ? req.query.value : false;
   if (!value) {
-    res.send(422, 'No value provided' )
+    res.send(422, 'Invalid' )
   } else {
     let response = {
       "function": "cidrToMask",
