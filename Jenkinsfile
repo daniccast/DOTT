@@ -63,7 +63,7 @@ pipeline {
 					script {
 						try {
 							nodejs(nodeJSInstallationName: 'nodejs'){
-								sh '(npm run start&)'
+								sh 'npm start'
 							}
 						}
 						catch (exc){
