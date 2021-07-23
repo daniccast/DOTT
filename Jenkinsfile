@@ -48,6 +48,7 @@ node {
 		try {
 			sh'pwd'
 			sh'ls'
+			sh'nohup npm start &'
 			/*
 			nodejs(nodeJSInstallationName: 'nodejs'){
 				sh 'echo deployed'
