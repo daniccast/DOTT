@@ -49,7 +49,7 @@ node {
 			nodejs(nodeJSInstallationName: 'nodejs'){
 				sh 'echo deployed'
 				sh 'npm install forever -g'
-				sh 'forever start "npm start" ./'
+				sh 'forever start ./'
 			}
 		}
 		catch (exc){
