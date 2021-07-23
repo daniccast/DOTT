@@ -1,5 +1,4 @@
 node {
-
 	stage('Clone'){
 		git url: 'https://github.com/daniccast/DOTT.git'
 	}
@@ -8,7 +7,7 @@ node {
 		try{
 			withSonarQubeEnv("sonar") {
 				sh '''
-						echo "Sonar start"
+						echo "Sonar start ll"
 						/home/ubuntu/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner \
 						-Dsonar.projectKey=DOTT \
 						-Dsonar.sources=./services \
@@ -43,7 +42,6 @@ node {
 
     stage('Deploy') {
 		try {
-		
 			sh 'sudo docker build -t devops-api-node .'
 			sh 'sudo docker run --name devops -dti -p 8000:8000 devops-api-node'
 		}
