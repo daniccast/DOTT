@@ -46,9 +46,7 @@ node {
 
     stage('Deploy') {
 		try {
-			sh'pwd'
-			sh'ls'
-			sh'nohup npm start &'
+			sh'sudo nohup npm start &'
 			/*
 			nodejs(nodeJSInstallationName: 'nodejs'){
 				sh 'echo deployed'
