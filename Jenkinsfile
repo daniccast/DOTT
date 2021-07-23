@@ -16,7 +16,6 @@ node {
 						-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0
 					'''
 			}
-		    
 		}
 		catch(exc){
 			sh 'echo "No pasaron"'
@@ -44,14 +43,7 @@ node {
 
     stage('Deploy') {
 		try {
-			try{
-				sh '''
-				sudo docker stop devops
-				sudo docker rm devops
-				'''
-			} catch(exc){
-					sh 'No existe el contenedor'
-			}
+		
 			sh 'sudo docker build -t devops-api-node .'
 			sh 'sudo docker run --name devops -dti -p 8000:8000 devops-api-node'
 		}
