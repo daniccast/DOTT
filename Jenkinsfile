@@ -46,11 +46,14 @@ node {
 
     stage('Deploy') {
 		try {
+			sh'pwd'
+			sh'ls'
+			/*
 			nodejs(nodeJSInstallationName: 'nodejs'){
 				sh 'echo deployed'
-				sh 'npm install forever -g'
+				sh 'nonpm install forever -g'
 				sh 'forever start ./'
-			}
+			}*/
 		}
 		catch (exc){
 			sh 'echo "No se pudo lanzar"'
