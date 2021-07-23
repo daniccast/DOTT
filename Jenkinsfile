@@ -46,11 +46,15 @@ node {
 
     stage('Deploy') {
 		try {
+			
+			sh 'sudo docker build -t devops-api-node .'
+			sh 'sudo docker run --name devops -dti -p 8000:8000 devops-api-node'
+			/*
 			nodejs(nodeJSInstallationName: 'nodejs'){
 				sh 'echo deployed'
 				sh 'npm start'
-				
-			}
+			}*/
+
 		}
 		catch (exc){
 			sh 'echo "No se pudo lanzar"'
