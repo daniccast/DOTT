@@ -2,7 +2,7 @@ node {
 	stage('Clone'){
 		git url: 'https://github.com/daniccast/DOTT.git'
 	}
-	/*stage('SonarQube analysis') {
+	stage('SonarQube analysis') {
 		try{
 			withSonarQubeEnv('sonar') {
 							
@@ -24,7 +24,7 @@ node {
 			sh 'echo "No pasaron"'
 		}
 	}
-			*/	
+			
 	stage('Build') {
 		nodejs(nodeJSInstallationName: 'nodejs'){
 			sh 'npm install'
@@ -49,12 +49,6 @@ node {
 			
 			sh 'sudo docker build -t devops-api-node .'
 			sh 'sudo docker run --name devops -dti -p 8000:8000 devops-api-node'
-			/*
-			nodejs(nodeJSInstallationName: 'nodejs'){
-				sh 'echo deployed'
-				sh 'npm start'
-			}*/
-
 		}
 		catch (exc){
 			sh 'echo "No se pudo lanzar"'
