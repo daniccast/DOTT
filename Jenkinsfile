@@ -1,7 +1,9 @@
 node {
+
 	stage('Clone'){
 		git url: 'https://github.com/daniccast/DOTT.git'
 	}
+
 	stage('SonarQube analysis') {
 		try{
 			withSonarQubeEnv("sonar") {
@@ -42,6 +44,14 @@ node {
 
     stage('Deploy') {
 		try {
+			try{
+				sh '''
+				sudo docker stop devops
+				sudo docker rm devops
+				'''
+			} catch(exc){
+					sh 'No existe el contenedor'
+			}
 			sh 'sudo docker build -t devops-api-node .'
 			sh 'sudo docker run --name devops -dti -p 8000:8000 devops-api-node'
 		}
