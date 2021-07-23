@@ -48,7 +48,8 @@ node {
 		try {
 			nodejs(nodeJSInstallationName: 'nodejs'){
 				sh 'echo deployed'
-				sh 'nohup npm start --production &'
+				sh 'npm install forever -g'
+				sh 'forever start "npm start" ./'
 			}
 		}
 		catch (exc){
