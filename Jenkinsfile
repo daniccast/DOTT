@@ -2,7 +2,7 @@ node {
 	stage('Clone'){
 		git url: 'https://github.com/daniccast/DOTT.git'
 	}
-	stage('SonarQube analysis') {
+	/*stage('SonarQube analysis') {
 		try{
 			withSonarQubeEnv('sonar') {
 							
@@ -13,7 +13,7 @@ node {
 						echo "Sonar start"
 						/home/ubuntu/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner \
 						-Dsonar.projectKey=DOTT \
-						-Dsonar.sources=./services \
+						-Dsonar.sources=./routes \
 						-Dsonar.host.url=http://18.119.117.22:9000 \
 						-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0
 						'''
@@ -24,8 +24,7 @@ node {
 			sh 'echo "No pasaron"'
 		}
 	}
-				
-
+			*/	
 	stage('Build') {
 		nodejs(nodeJSInstallationName: 'nodejs'){
 			sh 'npm install'
@@ -49,7 +48,8 @@ node {
 		try {
 			nodejs(nodeJSInstallationName: 'nodejs'){
 				sh 'echo deployed'
-				//	sh 'npm start'
+				sh 'npm start'
+				
 			}
 		}
 		catch (exc){
