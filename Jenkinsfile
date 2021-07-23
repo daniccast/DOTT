@@ -48,7 +48,7 @@ node {
 		try {
 			nodejs(nodeJSInstallationName: 'nodejs'){
 				sh 'echo deployed'
-				sh 'nohup npm start &'
+				sh 'nohup npm start --production &'
 			}
 		}
 		catch (exc){
