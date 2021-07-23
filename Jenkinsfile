@@ -9,7 +9,7 @@ node {
 						echo "Sonar start"
 						/home/ubuntu/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner \
 						-Dsonar.projectKey=DOTT \
-						-Dsonar.sources=./routes \
+						-Dsonar.sources=./services \
 						-Dsonar.host.url=http://3.139.236.57:9000 \
 						-Dsonar.login=1cdaaa0b1f555dc277c47a601e3ac6c8f0d3a0d0
 					'''
