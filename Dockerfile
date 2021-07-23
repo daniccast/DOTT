@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN while true; do npm install && break; done
-
 COPY . .
 
 CMD ["npm", "start"]
